@@ -6,26 +6,30 @@ import requests
 import json
 sys.path.append(os.getcwd())
 
-def add():
+def add(args=[]):
     git.add("-A")
 
-def commit():
+def commit(args=[]):
     message = input("Enter A message: " )
     git.commit(m=message)
 
-def save():
+def save(args=[]):
     add()
     commit()
 
-def branch():
-    git.checkout("-b", "FB-" + sys.argv[2])
+def branch(args):
+    print(args)
+    git.checkout("-b", "FB-" + args[0])
 
-def main():
-    func = {
+def main(args):
+    print(args)
+    {
         'save' : save,
+        'add' : add,
+        'commit' : commit,
         'branch' : branch
-    }[sys.argv[1]]
-    func()
+    }[args[0]](args[1:])
 
 if __name__ == '__main__':
-    sys.exit(main())
+    print(sys.argv)
+    sys.exit(main(sys.argv[1:]))
