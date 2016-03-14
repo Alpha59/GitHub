@@ -5,8 +5,19 @@ import sh
 import requests
 import json
 sys.path.append(os.getcwd())
+import ghCommands as gitHub
+
+def createRepo():
+    return gitHub.post('user/repos',
+        {
+            'name' : 'Test Repo Number 1'
+            ,'description' : 'Repo Description number 1'
+            ,'gitignore_template':'Python'
+            ,'license_template' : 'mit'
+        })
 
 def main():
+    gitHub.printJ(createRepo())
     pass
 
 if __name__ == '__main__':

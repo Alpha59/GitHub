@@ -12,15 +12,6 @@ proto = 'https://'
 apiBase =  'api.github.com/'
 base = proto + apiBase
 
-def createRepo():
-    return post('user/repos',
-        {
-            'name' : 'Test Repo Number 1'
-            ,'description' : 'Repo Description number 1'
-            ,'gitignore_template':'Python'
-            ,'license_template' : 'mit'
-        })
-
 def checkForKey():
     print(socket.gethostname())
 
@@ -56,7 +47,6 @@ def printJ(JSON):
 
 def main():
     printJ(get('user'))
-    printJ(createRepo())
 
 if __name__ == '__main__':
     sys.exit(main())
