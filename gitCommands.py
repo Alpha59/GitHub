@@ -5,6 +5,7 @@ from sh import git
 import requests
 import json
 sys.path.append(os.getcwd())
+import sshCommands
 
 def add(args=[]):
     git.add("-A")
