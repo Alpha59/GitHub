@@ -18,11 +18,9 @@ def save(args=[]):
     commit()
 
 def branch(args):
-    print(args)
     git.checkout("-b", "FB-" + args[0])
 
 def main(args):
-    print(args)
     {
         'save' : save,
         'add' : add,
@@ -31,5 +29,4 @@ def main(args):
     }[args[0]](args[1:])
 
 if __name__ == '__main__':
-    print(sys.argv)
     sys.exit(main(sys.argv[1:]))
