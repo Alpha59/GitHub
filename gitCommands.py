@@ -17,8 +17,15 @@ def save():
     add()
     commit()
 
+def branch():
+    git.checkout("-b", "FB-" + sys.argv[2])
+
 def main():
-    save()
+    func = {
+        'save' : save,
+        'branch' : branch
+    }[sys.argv[1]]
+    func()
 
 if __name__ == '__main__':
     sys.exit(main())
