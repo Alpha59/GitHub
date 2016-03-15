@@ -10,8 +10,14 @@ import sshCommands
 def add(args=[]):
     git.add("-A")
 
+def init(args=[]):
+    git.init()
+
 def commit(args=[]):
-    message = input("Enter A message: " )
+    if ( len(args) > 0 ) :
+        message = args[0]
+    else :
+        message = input("Enter A message: " )
     git.commit(m=message)
 
 def save(args=[]):

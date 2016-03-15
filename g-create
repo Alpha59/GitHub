@@ -8,6 +8,17 @@ sys.path.append(os.getcwd())
 import ghCommands as gitHub
 
 def createRepo():
+    # Check if repo Exists locally
+    # Check if repo exists remotely
+    # if local && !remote
+        # create remote & push
+    # if remote && !local
+        # init && clone
+    # if !local && !remote
+        # create remote, clone remote
+    # if local && remote
+        # add remote && pull
+    '''
     return gitHub.post('user/repos',
         {
             'name' : 'Test Repo Number 1'
@@ -15,10 +26,25 @@ def createRepo():
             ,'gitignore_template':'Python'
             ,'license_template' : 'mit'
         })
+    '''
+
+def setupLocal():
+    # Check for README
+        # if no README || README > 1 line
+        # Pull readme from https://gist.githubusercontent.com/jxson/1784669/raw/README.md
+    # Check for .gitignore
+        # if no .gitignore
+            # Pull from https://www.gitignore.io/api/<lang>
+    # Check for gh-pages branch
+        # if no gh-pages branch
+            # Copy from ./pages/coming_soon/<template>
+    # Check for .wiki
+        # if no .wiki
+            # Clone wiki into ../<repo-name>.wiki
 
 def main():
-    gitHub.printJ(createRepo())
-    pass
+    createRepo()
+    setupLocal()
 
 if __name__ == '__main__':
     sys.exit(main())
