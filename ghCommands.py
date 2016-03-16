@@ -61,6 +61,29 @@ def get(url, params={}):
 def printJ(JSON):
     print(json.dumps(JSON, indent=2))
 
+
+
+def create(dirName, desc) :
+    return gitHub.post('user/repos',
+        {
+            'name' : dirName
+            ,'description' : desc
+            ,'homepage' : proto + getUsername() + '.github.io/' + dirName
+            ,'has_issues' : 'true'
+            ,'has_wiki' : 'true'
+            ,'has_downloads' : 'true'
+            ,'auto_init' : false
+        })
+
+def getUsername() :
+    return get('user')['login'].lower()
+
+def isRepo(dirName) :
+    repos = get('user/repos')
+    for repo in repos :
+        if repo['name'] == dirName :
+            return repo
+
 def main():
     printJ(get('user'))
 

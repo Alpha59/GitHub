@@ -6,27 +6,25 @@ import requests
 import json
 sys.path.append(os.getcwd())
 import ghCommands as gitHub
+import gitCommands as git
 
-def createRepo():
-    # Check if repo Exists locally
-    # Check if repo exists remotely
-    # if local && !remote
-        # create remote & push
-    # if remote && !local
-        # init && clone
-    # if !local && !remote
-        # create remote, clone remote
-    # if local && remote
-        # add remote && pull
-    '''
-    return gitHub.post('user/repos',
-        {
-            'name' : 'Test Repo Number 1'
-            ,'description' : 'Repo Description number 1'
-            ,'gitignore_template':'Python'
-            ,'license_template' : 'mit'
-        })
-    '''
+def checkStatus(dirName):
+    local = git.isRepo(dirName)
+    remote = gitHub.isRepo(dirName)
+    if locale and not remote :
+        gitHub.create(dirName)
+        git.addRemote(dirName)
+        git.pushAll()
+    elif not local and remote :
+        git.clone(remote['clone_url'])
+    elif not local and not remote :
+        created = gitHub.create(dirName)
+        git.clone(created)
+    elif local and remote :
+        git.save()
+        git.addRemote(remote['full_name'])
+        git.fetch()
+        git.pushAll()
 
 def setupLocal():
     # Check for README
@@ -42,9 +40,15 @@ def setupLocal():
         # if no .wiki
             # Clone wiki into ../<repo-name>.wiki
 
-def main():
-    createRepo()
-    setupLocal()
+def main(args):
+    if len(args) < 3 : # dirName lang description
+    if args[0] == "./":
+        dirName = os.getcwd().split("/")[-1]
+    else :
+        dirName = args[0]
+
+    checkStatus(dirName)
+    setupLocal(args)
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(sys.argsv[1:]))

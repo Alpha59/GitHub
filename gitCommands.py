@@ -13,6 +13,13 @@ def add(args=[]):
 def init(args=[]):
     git.init()
 
+def isRepo(args=[]):
+    try:
+        git("rev-parse", "--is-inside-work-tree")
+        return 1
+    except:
+        return 0
+
 def commit(args=[]):
     if ( len(args) > 0 ) :
         message = args[0]
@@ -24,6 +31,18 @@ def save(args=[]):
     add()
     commit()
 
+def addRemote():
+    pass
+
+def clone():
+    pass
+
+def fetch():
+    pass
+
+def pushAll():
+    pass
+
 def branch(args):
     git.checkout("-b", "FB-" + args[0])
 
@@ -32,7 +51,8 @@ def main(args):
         'save' : save,
         'add' : add,
         'commit' : commit,
-        'branch' : branch
+        'branch' : branch,
+        'isRepo' : isRepo
     }[args[0]](args[1:])
 
 if __name__ == '__main__':
