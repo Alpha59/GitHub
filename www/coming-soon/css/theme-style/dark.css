@@ -1,0 +1,68 @@
+.atom-gradient {
+  background: -webkit-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* Chrome 10+, Saf5.1+ */
+  background: -moz-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* IE10 */
+  background: -o-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* Opera 11.10+ */
+  background: linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* W3C */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+.atom-btn-default,
+input,
+.atom-countdown,
+.atom-menu li.active > a,
+.atom-menu a:hover,
+.service-symbol i,
+.service .icon i {
+  color: #fff;
+}
+
+.toggle-bar .bars,
+.toggle-bar .bars:before,
+.toggle-bar .bars:after,
+.atom-menu a:after,
+.heading-sepearator {
+  background-color: #fff;
+}
+
+#atom-mc-form input,
+.atom-btn-default {
+  border-color: #fff;
+}
+
+#content-preloader {
+  border-top-color: rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(255, 255, 255, 0.65);
+  border-right-color: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+:-ms-input-placeholder {
+  color: #fff;
+}

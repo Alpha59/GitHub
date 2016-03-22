@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "Either stashes the changes or undoes the last commit, depending on the status"
+def args_adder(parser):
+    pass
+
+def run(verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

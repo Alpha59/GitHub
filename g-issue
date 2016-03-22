@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc ="Takes a PR and marks it as approved by this user. If --merge option is set, the branch will be merged into the appropriate branch (if possible). If --approve is set, the branch will be approved by this user, if --reject is set the PR will be marked as rejected, and if --close is marked, the branch will be marked as closed."
+
+def args_adder(parser):
+    parser.add_argument('name', type=str,help="The name or number of the issue, number is used for commenting on an issue.")
+    parser.add_argument('-d', '--desc', type=str, help="The issue description")
+    parser.add_argument('-l', '--label', type=str, help="The issue label")
+    parser.add_argument('-a', '--assignee', type=str, help="The issue assignee")
+    parser.add_argument('-m', '--milestone', type=str, help="The issue milestone")
+    parser.add_argument('-c', '--comment', type=str, help="The issue milestone")
+
+def run(name, desc, label, assignee, milestone, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

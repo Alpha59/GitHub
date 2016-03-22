@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "Creates a gold script in the dedicated Golf Script folder ~/Dev/Golf/ and creates the folder if needed"
+def args_adder(parser):
+    parser.add_argument('name', type=str,help="Name of the Golf Script")
+    parser.add_argument('-d', '--desc', type=str,help="The problem descriptionm, including examples. if not set, vim will open to accept a description")
+    parser.add_argument('--data', N, nargs="*",help="The data to be fed into the golf script for testing, if not provided, vim will open up to accept a dataset.")
+    parser.add_argument('-n', '--nodata', action='store_true' ,help="If this variable is set, then it is assumed the script runs without arguements and vim will not open to accept a dataset")
+
+def run(name, desc, data, nodata, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

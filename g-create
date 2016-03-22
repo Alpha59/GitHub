@@ -4,51 +4,85 @@ import sys
 import sh
 import requests
 import json
+import argparse
 sys.path.append(os.getcwd())
 import ghCommands as gitHub
 import gitCommands as git
 
-def checkStatus(dirName):
-    local = git.isRepo(dirName)
-    remote = gitHub.isRepo(dirName)
-    if locale and not remote :
-        gitHub.create(dirName)
-        git.addRemote(dirName)
-        git.pushAll()
-    elif not local and remote :
-        git.clone(remote['clone_url'])
-    elif not local and not remote :
-        created = gitHub.create(dirName)
-        git.clone(created)
-    elif local and remote :
-        git.save()
-        git.addRemote(remote['full_name'])
-        git.fetch()
-        git.pushAll()
+def exists(proj_name) :
+    return {
+            'local' : git.isRepo() # Checks current directory to see if it is a repo
+            ,'remote' : gitHub.isRepo(proj_name) # Checks to see if repo exists on github
+        }
 
-def setupLocal():
-    # Check for README
-        # if no README || README > 1 line
-        # Pull readme from https://gist.githubusercontent.com/jxson/1784669/raw/README.md
-    # Check for .gitignore
-        # if no .gitignore
-            # Pull from https://www.gitignore.io/api/<lang>
-    # Check for gh-pages branch
-        # if no gh-pages branch
-            # Copy from ./pages/coming_soon/<template>
-    # Check for .wiki
-        # if no .wiki
-            # Clone wiki into ../<repo-name>.wiki
+
+def create(proj_name, args) :
+    exists = exists(proj_name)
+    if not exists.remote and not args.noremote: # if a remote doesn't exist
+        remote = gitHub.create(proj_name)
+
+    # now a remote exists regardless
+    if not exists.local : # clone remote
+        git.clone(remote['clone_url'])
+
+    # Now remote and local exist.
+    git.save()
+    git.addRemote(remote['full_name'], fetch=1)
+    git.pushAll()
+    return remote['clone_url']
+
+def beautify(args):
+    try: out = sh.wc("-l", "README.md")
+    except:
+        with open("README.md", "a+") as f:
+            f.write("# " + dirName + "\n")
+            f.write(desc + "\n")
+            f.write(sh.curl("https://gist.githubusercontent.com/jxson/1784669/raw/README.md"));
+    try: out = sh.wc("-l", ".gitignore")
+    except:
+        with open(".gitignore", "a+") as f:
+            f.write(sh.curl("https://www.gitignore.io/api/" + lang));
+    try: git.branchVerify("gh-pages")
+    except:
+        git.pagesBranch()
+    try: sh.ls("../" + dirName + ".wiki")
+    except: git.cloneWiki(cloneUrl)
+
 
 def main(args):
-    if len(args) < 3 : # dirName lang description
-    if args[0] == "./":
-        dirName = os.getcwd().split("/")[-1]
-    else :
-        dirName = args[0]
+    # Set up arguments using arg parser
+    cwd = os.getcwd.split("/")[-1]
+    parser = ArgumentParses(description="Creates a new project locally, remotely, and with appropriate outward pages")
+    parser.add_arguements('proj_lang', type=str
+        ,help="")
+    parser.add_arguements(['-d, --desc'], type=str
+        ,help="")
+    parser.add_arguements('proj_name', type=str, nargs='?', default=cwd
+        ,help="")
+    parser.add_arguements(['-P', '--nopages'], action='store_false'
+        ,help="")
+    parser.add_arguements(['-R', '--noremote'], action='store_false'
+        ,help="")
+    parser.add_arguements(['-p', '--private'], action='store_true'
+        ,help="")
+    parser.add_arguements(['-v', '--verbose'], action='store_true'
+        ,help="")
+    parser.add_arguements(['-w', '--webfront'], action='store_true'
+        ,help="")
+    parser.add_arguements(['-g', '--clone-website'], type=str
+        ,help="")
 
-    checkStatus(dirName)
-    setupLocal(args)
+    # Find directory that you should be in, and switch to that directory
+    args = parser.parse_args()
+    if args.proj_name != cwd :
+        try: sh.ls(args.proj_name)
+        except: sh.mkdir(proj_name)
+        sh.cd(proj_name)
+
+    # Directory exists, and you are in the project directory.
+    created = create(proj_name, proj_lang, proj_desc, args)
+    beautify = beautify(created)
+    git.pushAll()
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argsv[1:]))
+    sys.exit(main())

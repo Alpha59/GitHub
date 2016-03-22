@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc ="Takes a PR and marks it as approved by this user. If --merge option is set, the branch will be merged into the appropriate branch (if possible). If --approve is set, the branch will be approved by this user, if --reject is set the PR will be marked as rejected, and if --close is marked, the branch will be marked as closed."
+
+def args_adder(parser):
+    parser.add_argument('name', type=str,help="The name of the branch to be PR'd (including the pre-fix)")
+    parser.add_argument('-m', '--merge', type=str,help="Merge the PR, this will only happen if 2 users have approved the PR, allows a comment to be added", default=":herb")
+    parser.add_argument('-a', '--approve', type=str,help="Marks the PR as approved by this user, allows a comment to be added", default=":+1:")
+    parser.add_argument('-q', '--question', type=str,help="Allows users to leave a question, leaves the comment on the conversation", default=":question:")
+    parser.add_argument('-r', '--reject', type=str,help="Marks this PR as Rejected, and takes a comment as to why.")
+    parser.add_argument('-c', '--close', type=str,help="Marks this PR as Closed without merging, this requires 2 users to reject, and takes a comment as to why")
+    parser.add_argument('-f', '--force', type=str,help="Ignores the 2 user approval / denial requirements, and takes a comment as to why")
+
+def run(name, merge, approve, question, reject, close, force, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

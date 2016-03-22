@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "This will create a new release- auto incrementing tags, generating new gh-pages (including switching away from coming-soon page), generate new wiki/doc information to match the current release version, and run the release hook. Releases are pulled off of the dev branch"
+def args_adder(parser):
+    parser.add_argument('severity', type=int,choices=[0,1,2,3],help="The severity of the release. 0 is only accessible by hotfixes, and will update the y.y.yx value, 1 updates the y.y.x0, 2 updates the y.x.00, 3 updates the x.0.00 value of the release tag.")
+    parser.add_argument('-p', '--pre', action='set_true', help="Using this flag will only generate a pre-release branch, which can be used to smoke test the enviornment (if appropriate)")
+
+def run(severity, pre, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

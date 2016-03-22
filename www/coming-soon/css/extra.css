@@ -1,0 +1,110 @@
+/* ======================= your extra important css code here ===================== */
+/* =========================================================== 
+    demo panel section
+============================================================ */
+/* =========================================================== 
+    demo panel section
+============================================================ */
+#demo-panel {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 280px;
+  height: 400px;
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+  transition: all 0.3s ease;
+  z-index: 999999;
+  margin-left: -280px;
+}
+#demo-panel.active {
+  margin-left: 0;
+}
+#demo-panel button {
+  height: 30px;
+  width: 30px;
+  text-indent: -99999999999px;
+  margin: 5px;
+}
+#demo-panel h4 {
+  margin-top: 30px;
+  text-transform: capitalize;
+  color: #fff !important;
+}
+#demo-panel .demo-close {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  height: 40px;
+  width: 40px;
+  background-color: #222;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+#demo-panel .demo-close i {
+  font-size: 18px;
+  color: #fff;
+}
+
+.blue {
+  background-color: #18BCF9;
+}
+
+.brown {
+  background-color: #B99A7B;
+}
+
+.green {
+  background-color: #A7CB00;
+}
+
+.orange {
+  background-color: #FB5F24;
+}
+
+.red {
+  background-color: #F22613;
+}
+
+.slate {
+  background-color: #6b798f;
+}
+
+.teal {
+  background-color: #00FFD7;
+}
+
+.vine {
+  background-color: #D21662;
+}
+
+.violet {
+  background-color: #7C36A6;
+}
+
+.yellow {
+  background-color: #FFA10F;
+}
+
+.cursor {
+  cursor: not-allowed;
+}
+
+.atom-light-dark .light {
+  background-color: #fff;
+}
+.atom-light-dark .dark {
+  background-color: #222;
+}
+
+.atom-os-demo button:nth-child(2) {
+  border-radius: 5px !important;
+}
+.atom-os-demo button:nth-child(3) {
+  border-radius: 0 !important;
+}
+.atom-os-demo button:nth-child(4) {
+  border-radius: 25px !important;
+}

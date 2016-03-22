@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "This will redo elements off of the undo stack"
+def args_adder(parser):
+    parser.add_argument('-n', '--num', type=str,help="The number of undos to redo")
+
+def run(num, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

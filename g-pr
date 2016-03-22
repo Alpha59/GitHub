@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "This method will pull down and merge dev into the current branch, once all merge conflicts have been resolved- it will continue by creating a PR on github. These PRs can be reviewed from the command line."
+def args_adder(parser):
+    parser.add_argument('-a', '--assignee', type=str,help="Assigns the PR to a given user, if none is present, this will assign the PR to the current user. If the assignee does not exist, or is not on the project, then the current user will be assigned.")
+
+def run(assignee, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

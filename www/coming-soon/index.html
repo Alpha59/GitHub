@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="{project.desc}">
+        <meta name="keywords" content="">
+        <meta name="author" content="{author}">
+        <title>{project.title} Coming Soon</title>
+        <link rel="icon" type="image/png" href="http://traivan98.xyz/atom-preview/image-style/images/favicon.http://traivan98.xyz/atom-preview/image-style/png" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/responsive.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/theme-style/dark.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="css/theme-style/android.css" media="all" data-os-style/>
+        <link rel="stylesheet" type="text/css" href="css/theme-content-color/red.css" media="all" data-content-color/>
+        <link rel="stylesheet" type="text/css" href="css/extra.css" media="all" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+        <!-- ===============    Start template markup     =============== -->
+
+        <!-- preloader -->
+        <div id="atom-preloader">
+            <div class="atom-preloader-circle"></div>
+        </div>
+        <!--/ preloader -->
+
+        <!-- content preloader -->
+        <div id="content-preloader">
+        </div>
+        <!--/ content preloader -->
+        <!-- header -->
+        <header class="atom-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="nav-row">
+                            <a class="toggle-bar" href="#">
+                                <span class="bars"></span>
+                            </a>
+                            <ul class="atom-menu list-inline">
+                                <li class="active"><a href="#atom-home">Home</a></li>
+                                {{for section in sections}}
+                                <li><a href="#atom-{section.href}">{section.title}</a></li>
+                                {{endfor}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--/ header -->
+
+
+        <!-- START main wrapper section -->
+        <div class="main-wrapper bg-img" data-background="http://traivan98.xyz/atom-preview/image-style/images/dark_bg.jpg">
+            <!-- overlay -->
+            <div class="atom-overlay"></div>
+            <!--/ overlay -->
+            <!-- home -->
+            <div class="page-section active" id="atom-home">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="1s" data-animation-duration="1s"><strong>
+	<span class="element" data-elements="{project.title}, Launching soon"></span></strong>
+                            </h1>
+                            <p class="animate-start" data-animations="fadeInUp" data-animation-delay="1.5s" data-animation-duration="1s">{project.desc}</p>
+                            <!--<div class="atom-countdown animate-start" data-animations="fadeInUp" data-animation-delay="2s" data-animation-duration="1s"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ home -->
+            {{for section in sections}}
+            <!-- about -->
+            <div class="page-section" id="atom-{section.href}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="page-heading">
+                                <h1 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="0.5s" data-animation-duration="1s"><strong>{section.title}</strong></h1>
+                            </div>
+                            <div class="heading-sepearator animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s"></div>
+                            <p class="animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s">{section.desc}</p>
+                            {{for subsection in section.subsections}}
+                            <h3 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="0.5s" data-animation-duration="1s"><strong>{subsection.title}</strong></h3>
+                            <p class="animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s">{subsection.desc}</p>
+                            {{endfor}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{endfor}}
+        </div>
+        <!--/ END main wrapper section -->
+
+        <!-- footer -->
+        <div class="atom-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><a href="{url}"><i class="fa fa-github-alt"></i></a></p>
+                        <p class="copyright"><strong>Created by {author} &copy; {date}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ footer -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-1.11.3.min.js"><\/script>')</script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/typed.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/animation.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.countdown.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.ajaxchimp.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/jquery.mb.YTPlayer.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/row-plugins.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/active.js"></script>
+    </body>
+</html>

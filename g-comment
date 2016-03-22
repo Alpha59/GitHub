@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+
+desc ="Allows a user to edit and comment on a file/line in a PR, as well as view the comments on the current PR review branch. Specifiying no parameters will simply display comments on this PR."
+def args_adder(parser):
+    parser.add_argument('-n', '--new', type=str, help="Allows the user to create a new comment at a specific file/line")
+    parser.add_argument('-f', type=str, help="Name of file to comment on")
+    parser.add_argument('-l', '--line', type=str, help="Line number to leave comment on")
+
+    parser.add_argument('-r', '--reply', type=str,help="Allows the user to reply to a specific comment on the thread")
+    parser.add_argument('-d', '--delete', type=str,help="Allows the user to delete a comment")
+    parser.add_argument('-e', '--edit', type=str,help="Allows the user to edit a comment")
+    parser.add_argument('-i', '--cid', type=str, help="Comment id for parent comment, or comment to delete/edit")
+
+def run(new, f, line, reply, delete, edit, cid, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)

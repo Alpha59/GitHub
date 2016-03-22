@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "Creates a new project and remote Repo, including all of the appropraite files for each (README, wiki, coming-soon, .gitignore, ect). If either remote/local already exists- the script will work around that flow."
+def args_adder(parser):
+    parser.add_argument('name', type=str,help="The name of the project to be created")
+    parser.add_argument('lang', type=str, help="The primary language that this project will be developed in")
+    parser.add_argument('-d', '--desc', type=str, help="The description of the proj", default="No Desc Avail"
+    parser.add_argument('-P', '--nopages', action='store_true', help="Do not enable github pages for this project")
+    parser.add_argument('-R', '--noremote', action='store_true', help="Do not enable github remote for this project")
+    parser.add_argument('-p', '--private', action='store_true', help="Make the gitHub repo Private")
+    parser.add_argument('-w', '--webfront', action='store_true', help="Enable a webfront at /<proj_name>/sample/")
+
+def run(name, lang, desc, nopages, noremote, private, webfront, verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)
