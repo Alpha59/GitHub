@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "Creates a new project with branches (and boilerplate code) for 75 different languages - each with the appropriate README file attached, and all branches are orphans to allow development in multiple languages"
+def args_adder(parser):
+    pass
+
+def run(verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)
