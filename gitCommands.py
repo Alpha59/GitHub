@@ -29,12 +29,11 @@ def isRepo():
         return 0
 
 def branchName():
-    # return sh.cut("-d", "' '", "-f2", sh.grep("\*", git.branch()))
-    pass
+    return git("rev-parse", "--abbrev-ref", "HEAD")
 
 def commit(message=False):
     if not message :
-        message = editCommands(branchName() + " : ")
+        message = editCommands(str(branchName()) + " : ")
     print("git commit -m " + message)
     try : git.commit(m=message)
     except : print("Nothing to commit")
@@ -69,9 +68,9 @@ def push():
     try: git.push()
     except:
         try:
-            branchName = git("rev-parse", "--abbrev-ref", "HEAD")
-            print("git push -u gh " + branchName)
-            try: git.push("-u", "gh", branchName)
+            branch_name = branchName()
+            print("git push -u gh " + branch_name)
+            try: git.push("-u", "gh", branch_name)
             except : print("Nothing to push")
         except: print("Nothing has been created")
 

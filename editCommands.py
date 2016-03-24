@@ -7,7 +7,7 @@ desc = "Opens the default editor with a specified message"
 def args_adder(parser):
     parser.add_argument('initial_message', type=str,default="", help="Name of the PR branch to review")
 
-def run(initial_message, verbose):
+def run(initial_message, verbose=False):
     import ghCommands as gitHub
     import gitCommands as git
     import sys, os, tempfile

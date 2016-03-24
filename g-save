@@ -5,7 +5,6 @@ sys.path.append(os.getcwd())
 desc = "Saves the changes by adding all and committing them"
 def args_adder(parser):
     parser.add_argument('-m', '--message',type=str, default=False, help="The message to commit with")
-    pass
 
 def run(message=False, verbose=False):
     import gitCommands as git
