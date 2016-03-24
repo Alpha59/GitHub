@@ -15,12 +15,12 @@ def run(initial_message, verbose=False):
     EDITOR = os.environ.get('EDITOR','vim') #that easy!
     cwd = os.getcwd().split("/")[-1]
     with tempfile.NamedTemporaryFile(suffix=".tmp") as tf:
-        tf.write(initial_message)
+        tf.write(bytes(initial_message, "ascii"))
         tf.flush()
         call([EDITOR, tf.name])
 
         tf.seek(0)
-        return tf.read()
+        return str(tf.read())
 
 def console(output, verbose):
     print(output)
