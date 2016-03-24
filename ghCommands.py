@@ -67,13 +67,13 @@ def main():
 
 ##############################################################################
 
-def create(dirName, desc) :
+def create(name, desc, private) :
     print("gitHub.post('user/repos')")
     return post('user/repos',
         {
-            'name' : dirName
+            'name' : name
             ,'description' : desc
-            ,'homepage' : proto + getUsername() + '.github.io/' + dirName
+            ,'homepage' : proto + getUsername() + '.github.io/' + name
             ,'has_issues' : 'true'
             ,'has_wiki' : 'true'
             ,'has_downloads' : 'true'
@@ -89,3 +89,4 @@ def isRepo(dirName) :
     for repo in repos :
         if repo['name'] == dirName :
             return repo
+    return False

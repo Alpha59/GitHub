@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Creates a new project with branches (and boilerplate code) for 75 different languages - each with the appropriate README file attached, and all branches are orphans to allow development in multiple languages"
+desc = "Creates a template website, with a combination of layout / CSS framework / website type which can be used as a starting point for development"
 def args_adder(parser):
     pass
 

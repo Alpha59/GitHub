@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+import sys, os
+sys.path.append(os.getcwd())
+
+desc = "Creates a new project with branches (and boilerplate code) for 70 different languages - each with the appropriate README file attached, and all branches are orphans to allow development in multiple languages, this is meant to act as a rosetta stone implementation- meaning that each language will be listed in the README with links to that language's branch. Branching does not need to be done off of these projects, because they are meant to be small projects."
+def args_adder(parser):
+    pass
+
+def run(verbose):
+    pass
+
+def console(output, verbose):
+    print output
+
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)
+
+
+languagedef = {
+            java :
+            javascript :
+            python :
+            php :
+            cpp :
+            ruby :
+            objective-c :
+            perl :
+            R :
+            C :
+            MATLAB :
+            swift :
+            scala :
+            shell :
+            haskell :
+            lua :
+            groovy :
+            go :
+            assembly :
+            sql :
+            viml :
+            pascal :
+            closure :
+            latex :
+            openedge ABL :
+            emacs lisp :
+            cobol :
+            FORTRAN :
+            SAS :
+            D :
+            ARDUINO :
+            ABAP :
+            POWERSHELL :
+            scheme :
+            processing :
+            erlang :
+            autoconf :
+            dart :
+            julia :
+            rust :
+            make :
+            ada :
+            puppet :
+            lisp :
+            F :
+            actionscript :
+            transact-sql :
+            xslt :
+            prolog :
+            ocaml :
+            labview :
+            ladder logic :
+            common lisp :
+            awk :
+            ML :
+            elixr :
+            alice ML :
+            mathematica :
+            haxe :
+            racket :
+            closure :
+            Apex :
+            regex :
+            arnoldC :
+            brainfuck :
+            piet :
+            whitespace :
+            golfscript :
+            forth :
+        };

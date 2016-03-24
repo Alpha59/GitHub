@@ -23,7 +23,7 @@ def run(initial_message, verbose):
         return tf.read()
 
 def console(output, verbose):
-    print output
+    print(output)
 
 #########################################################################
 # Boiler plate code to create a new module / command line module to be used.

@@ -2,14 +2,13 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Saves the changes by adding all and committing them"
+desc = "Creates a boilerplate code file for the specified langauge- essentially the same as vim <non-existing-file> except it will generate code that can be used to boilerplate development. This includes code to run from either commandline or as an include/module, and basic set-up of the file for that language. If a boilerplate.xx file is needed, but does not exist- it will be created."
+
 def args_adder(parser):
-    parser.add_argument('-m', '--message',type=str, default=False, help="The message to commit with")
     pass
 
-def run(message=False, verbose=False):
-    import gitCommands as git
-    return git.save(message)
+def run(verbose):
+    pass
 
 def console(output, verbose):
     print output

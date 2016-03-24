@@ -14,6 +14,16 @@ def create(name, desc, args_adder, run, console):
                 # if run as a module
                 return run(*args)
 
+    def verboseCurry(v):
+        def verbose(output):
+            print(output)
+        def noverbose(output):
+            pass
+        if v :
+            return verbose
+        else :
+            return noverbose
+
     def main(func):
         # Read the arguements using argparse
         parser = argparse.ArgumentParser(description=desc)
@@ -25,6 +35,7 @@ def create(name, desc, args_adder, run, console):
         args_adder(parser)
         # Parse the arguments
         args = parser.parse_args()
+        args.verbose = verboseCurry(args.verbose)
         # Run the console function (the output) with or without verbosity.
         console(func(args), args.verbose)
 

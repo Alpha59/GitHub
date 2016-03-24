@@ -1,88 +1,89 @@
 #!/usr/bin/env python3
-import os
-import sys
-import sh
-import requests
-import json
-import argparse
+import sys, os
 sys.path.append(os.getcwd())
-import ghCommands as gitHub
-import gitCommands as git
 
-def exists(proj_name) :
-    return {
-            'local' : git.isRepo() # Checks current directory to see if it is a repo
-            ,'remote' : gitHub.isRepo(proj_name) # Checks to see if repo exists on github
-        }
+desc = "Creates a new project and remote Repo, including all of the appropraite files for each (README, wiki, coming-soon, .gitignore, ect). If either remote/local already exists- the script will work around that flow."
+def args_adder(parser):
+    parser.add_argument('name', type=str,help="The name of the project to be created")
+    parser.add_argument('lang', type=str, help="The primary language that this project will be developed in")
+    parser.add_argument('-d', '--desc', type=str, help="The description of the proj", default="No Desc Avail")
+    parser.add_argument('-P', '--nopages', action='store_true', help="Do not enable github pages for this project")
+    parser.add_argument('-R', '--noremote', action='store_true', help="Do not enable github remote for this project")
+    parser.add_argument('-p', '--private', action='store_true', help="Make the gitHub repo Private")
+    parser.add_argument('-w', '--webfront', action='store_true', help="Enable a webfront at /<proj_name>/sample/")
+    pass
 
+def run(name, lang, desc="No Desc Avail", nopages=False, noremote=False, private=False, webfront=False, verbose=False):
+    import os, sh
+    import gitCommands as git
+    import ghCommands as gh
 
-def create(proj_name, args) :
-    exists = exists(proj_name)
-    if not exists.remote and not args.noremote: # if a remote doesn't exist
-        remote = gitHub.create(proj_name)
+    # Ensure that you are in the correct folder first
+    # Create the folder if it does not already exist
+    cwd = os.getcwd().split("/")[-1]
+    verbose(cwd)
+    if name != cwd :
+        verbose("CWD does not match project Name")
+        try :
+            verbose("Checking if folder exists in CWD")
+            sh.ls(name)
+            verbose("Folder exists in CWD")
+        except:
+            verbose("Folder does not exist in CWD")
+            sh.mkdir(name)
+            verbose("Folder created in CWD")
+        verbose("Changing CWD to" + os.getcwd() + "/" + name)
+        sh.cd(name)
+        verbose(os.getcwd().split("/")[-1])
+    else :
+        verbose("Already in CWD")
 
-    # now a remote exists regardless
-    if not exists.local : # clone remote
+    # Create the project on gitHub and locally
+    local = git.isRepo()
+    remote = gh.isRepo(name)
+    if not remote and not noremote :
+        verbose("Remote repo not found")
+        verbose("Creating remote Repo")
+        remote = gh.create(name, desc, private)
+    if not local :
+        verbose("Local repo not found")
+        verbose("Cloning remote repo")
         git.clone(remote['clone_url'])
+    verbose("Remote and now both exist")
+    verbose("Saving local copy")
+    git.save("Initial sync local/remote")
+    if not noremote :
+        verbose("Adding the remote repo to the repository")
+        verbose("Fetching contents of remote repo")
+        git.addRemote(remote['full_name'], fetch=True)
+        git.pushAll("Syncing with remote added")
+        verbose("Remote and local are now synced")
 
-    # Now remote and local exist.
-    git.save()
-    git.addRemote(remote['full_name'], fetch=1)
-    git.pushAll()
-    return remote['clone_url']
+    # Make branches with protection.
+    # Protected branches are still in developer preview- and will not be enabled yet
+    # https://developer.github.com/v3/repos/#enabling-and-disabling-branch-protection
 
-def beautify(args):
+    # Pull down blank README and add header
     try: out = sh.wc("-l", "README.md")
     except:
         with open("README.md", "a+") as f:
-            f.write("# " + dirName + "\n")
+            f.write("# " + name + "\n")
             f.write(desc + "\n")
-            f.write(sh.curl("https://gist.githubusercontent.com/jxson/1784669/raw/README.md"));
+            # This should be one of my own gists preferably.
+            f.write(str(sh.curl("https://gist.githubusercontent.com/jxson/1784669/raw/README.md")));
+    # Pull down a blank gitignore for this lang
     try: out = sh.wc("-l", ".gitignore")
     except:
         with open(".gitignore", "a+") as f:
-            f.write(sh.curl("https://www.gitignore.io/api/" + lang));
-    try: git.branchVerify("gh-pages")
-    except:
-        git.pagesBranch()
-    try: sh.ls("../" + dirName + ".wiki")
-    except: git.cloneWiki(cloneUrl)
+            f.write(str(sh.curl("https://www.gitignore.io/api/" + lang)))
 
+    return 0
 
-def main(args):
-    # Set up arguments using arg parser
-    cwd = os.getcwd.split("/")[-1]
-    parser = ArgumentParses(description="Creates a new project locally, remotely, and with appropriate outward pages")
-    parser.add_arguements('proj_lang', type=str
-        ,help="")
-    parser.add_arguements(['-d, --desc'], type=str
-        ,help="")
-    parser.add_arguements('proj_name', type=str, nargs='?', default=cwd
-        ,help="")
-    parser.add_arguements(['-P', '--nopages'], action='store_false'
-        ,help="")
-    parser.add_arguements(['-R', '--noremote'], action='store_false'
-        ,help="")
-    parser.add_arguements(['-p', '--private'], action='store_true'
-        ,help="")
-    parser.add_arguements(['-v', '--verbose'], action='store_true'
-        ,help="")
-    parser.add_arguements(['-w', '--webfront'], action='store_true'
-        ,help="")
-    parser.add_arguements(['-g', '--clone-website'], type=str
-        ,help="")
+def console(output, verbose):
+    return output
 
-    # Find directory that you should be in, and switch to that directory
-    args = parser.parse_args()
-    if args.proj_name != cwd :
-        try: sh.ls(args.proj_name)
-        except: sh.mkdir(proj_name)
-        sh.cd(proj_name)
-
-    # Directory exists, and you are in the project directory.
-    created = create(proj_name, proj_lang, proj_desc, args)
-    beautify = beautify(created)
-    git.pushAll()
-
-if __name__ == '__main__':
-    sys.exit(main())
+#########################################################################
+# Boiler plate code to create a new module / command line module to be used.
+#########################################################################
+import boilerplate
+boilerplate.create(__name__, desc, args_adder, run, console)
