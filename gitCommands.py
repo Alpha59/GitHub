@@ -74,9 +74,9 @@ def push():
             except : print("Nothing to push")
         except: print("Nothing has been created")
 
-def branch():
-    try: git.checkout("FB-" + args[0])
-    except: git.checkout("-b", "FB-" + args[0])
+def branch(name):
+    try: git.checkout(name)
+    except: git.checkout("-b", name)
 
 def branchVerify(name):
     return git.branchVerify("rev-parse", "--verify", name)
