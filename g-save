@@ -6,9 +6,9 @@ desc = "Saves the changes by adding all and committing them. This can be used to
 def args_adder(parser):
     parser.add_argument('-m', '--message',type=str, default=False, help="The message to commit with")
     parser.add_argument('-R', '--remote',action='store_false', help="Ready to save to remote")
-    parser.add_argument('-P', '--pullrequest',action='store_false', help="Create a pull request (Automatically saves to remote as well")
+    parser.add_argument('-P', '--pullrequest',action='store_true', help="Create a pull request (Automatically saves to remote as well")
 
-def run(message=False, verbose=False):
+def run(message=False, remote=True, pullrequest=False, verbose=False):
     import gitCommands as git
     return git.save(message)
 
