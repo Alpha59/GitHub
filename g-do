@@ -22,6 +22,7 @@ desc = "Creates a Hot Fix branch from the QA Branch. This branch will be merged 
 """
 qa
 desc = "Creates a branch that QA can use to test feat branches specifically."
+    parser.add_argument('name', type=str,help="Name of the QA Hot Fix. This is normally the original issue number appened with -[a-z]")
 """
 
 """
@@ -32,13 +33,28 @@ desc = "Creates a new scripting branch and runs the appropriate script against i
 """
 desc = "Creates a new branch of the specified type by branching off of the appropriate branch"
 def args_adder(parser):
-    pass
+    parser.add_argument('branchType', help="The type of doing to do", choices=['s', 'qa', 'hfqa', 'hf', 'feat'])
+    parser.add_argument('name', help="The name of the branch")
+    parser.add_argument('f', nargs='?', type=str,help="The file to execute on the cwd")
+    parser.add_argument('-e', '--execute', type=str,help="The command to execute on the cwd")
+    parser.add_argument('-n', '--nodev', action='store_true',help="Do not switch to dev branch first")
 
-def run(verbose):
-    pass
+
+def run(branchType, name, f=None, execute="", nodev=False, verbose=False):
+    import gitCommands as git
+    if not nodev :
+        git.save("Saved to switch branches")
+        git.checkout("dev")
+    git.branch(branchType + "-" + name)
+    if branchType == "s" :
+        if not f is None:
+            verbose("Running script from file")
+        if not execute is "" :
+            verbose("Running script from cli")
+    return branchType + "-" + name
 
 def console(output, verbose):
-    print output
+    print(output)
 
 #########################################################################
 # Boiler plate code to create a new module / command line module to be used.
