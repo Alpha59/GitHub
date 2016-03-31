@@ -2,9 +2,9 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Runs git bisect to find the source of a bug using a graphic"
+desc = "Builds a static website from the main repo, and places it under '/www/sample/ (primarily copies the code to here)"
 def args_adder(parser):
-    parser.add_arguments('start', type=str, help="A commit known to be prior to the introduction of the issue being searched for, this will default to the begining of the codebase.")
+    pass
 
 def run(verbose):
     pass

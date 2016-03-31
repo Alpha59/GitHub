@@ -65,6 +65,9 @@ if __name__ == '__main__':
 def main():
     printJ(get('user/repos'))
 
+def shortURL(url):
+    return sh.cut("-d' '", "-f2", sh.grep("Location: ", sh.curl("-i", "https://git.io", "-F", "url=https://github.com/urbn/FPcom/pull/1714")))
+
 ##############################################################################
 
 def create(name, desc, private) :

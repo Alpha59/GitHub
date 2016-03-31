@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.getcwd())
 
 
-desc = "Opens the changes between this branch and the master side by side (runs icdiff, but shos full changes between this branch and master)"
+desc = "Opens the changes between this branch and the master side by side (runs icdiff, but shos full changes between this branch and master), useful on PR branches"
 def args_adder(parser):
     parser.add_argument('-l', '--last', action='store_true',help="Shows only the changes since the last commit (eq to git icdiff)")
     parser.add_argument('-i', '--inline', action='store_true',help="Shows change inline opposed to split view")

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="{{site.github.project_tagline}}">
+        <meta name="keywords" content="">
+        <meta name="author" content="{{site.github.owner_name}}">
+        <title>{{site.github.project_title}} Launching Soon</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" media="all" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/{{site.github.repository_name}}/css/soon.css" media="all" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="http://www.altavra.com/favicon.ico">
+    </head>
+
+    <body>
+        <!-- ===============    Start template markup     =============== -->
+
+        <!-- preloader -->
+        <div id="atom-preloader">
+            <div class="atom-preloader-circle"></div>
+        </div>
+        <!--/ preloader -->
+
+        <!-- content preloader -->
+        <div id="content-preloader">
+        </div>
+        <!--/ content preloader -->
+        <!-- header -->
+        <header class="atom-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="nav-row">
+                            <a class="toggle-bar" href="#">
+                                <span class="bars"></span>
+                            </a>
+                            <ul class="atom-menu list-inline">
+                                <li class="active"><a href="#home">Home</a></li>
+                                {% for cont in site.content %}
+	<li><a href="#{{cont.href}}">{{cont.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--/ header -->
+        <!-- START main wrapper section -->
+        <div class="main-wrapper bg-img" data-background="{{site.background}}">
+            <!-- overlay -->
+            <div class="atom-overlay"></div>
+            <!--/ overlay -->
+            <!-- home -->
+            <div class="page-section active" id="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="1s" data-animation-duration="1s"><strong>
+	<span class="element" data-elements="{{site.github.project_title}}, Launching soon"></span></strong>
+                            </h1>
+                            <p class="animate-start" data-animations="fadeInUp" data-animation-delay="1.5s" data-animation-duration="1s">{{site.github.project_tagline}}</p>
+                            <!--<div class="atom-countdown animate-start" data-animations="fadeInUp" data-animation-delay="2s" data-animation-duration="1s"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for cont in site.content %}
+                <!-- about -->
+                <div class="page-section" id="{{cont.href}}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="page-heading">
+	<h1 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="0.5s" data-animation-duration="1s"><strong>{{cont.title}}</strong></h1>
+                                </div>
+                                <div class="heading-sepearator animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s"></div>
+                                <p class="animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s">{{page.desc}}</p>
+                                {% for sub in cont.subs %}
+	<h3 class="text-uppercase animate-start" data-animations="fadeInUp" data-animation-delay="0.5s" data-animation-duration="1s"><strong>{{sub.title}}</strong></h3>
+	<p class="animate-start" data-animations="fadeInUp" data-animation-delay="0.8s" data-animation-duration="1s">{{sub.desc}}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--/ END main wrapper section -->
+            {% endfor %}
+        </div>
+
+        <!-- footer -->
+        <div class="atom-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><a href="{{site.github.repository_url}}"><i class="fa fa-github-alt"></i></a></p>
+                        <p class="copyright"><strong>Created by {{site.github.owner_name}} &copy; {{site.time | date: '%Y'}}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ footer -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"><\/script>')</script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.1.0/jquery.countdown.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxchimp/1.3.0/jquery.ajaxchimp.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.0.0/jquery.mb.YTPlayer.min.js"></script>
+
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/animation.min.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/typed.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/row-plugins.js"></script>
+        <script type="text/javascript" src="http://traivan98.xyz/atom-preview/image-style/js/active.js"></script>
+    </body>
+</html>

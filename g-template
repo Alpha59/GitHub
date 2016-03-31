@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Creates a template website, with a combination of layout / CSS framework / website type which can be used as a starting point for development"
+desc = "Creates a template website, with a combination of layout / CSS framework / website type which can be used as a starting point for development."
 def args_adder(parser):
     pass
 

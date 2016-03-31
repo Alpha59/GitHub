@@ -14,6 +14,13 @@ def args_adder(parser):
     parser.add_argument('-e', '--edit', type=str,help="Allows the user to edit a comment")
     parser.add_argument('-i', '--cid', type=str, help="Comment id for parent comment, or comment to delete/edit")
 
+    parser.add_argument('-a', '--approve', type=str,help="Marks the PR as approved by this user, allows a comment to be added", default=":+1:")
+    parser.add_argument('-q', '--question', type=str,help="Allows users to leave a question, leaves the comment on the conversation", default=":question:")
+    parser.add_argument('-r', '--reject', type=str,help="Marks this PR as Rejected, and takes a comment as to why.")
+    parser.add_argument('-c', '--close', type=str,help="Marks this PR as Closed without merging, this requires 2 users to reject, and takes a comment as to why")
+    parser.add_argument('-f', '--force', type=str,help="Ignores the 2 user approval / denial requirements, and takes a comment as to why")
+
+
 def run(new, f, line, reply, delete, edit, cid, verbose):
     pass
 

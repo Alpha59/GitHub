@@ -18,7 +18,7 @@ def console(output, verbose):
 import boilerplate
 boilerplate.create(__name__, desc, args_adder, run, console)
 
-
+"""
 languagedef = {
             java :
             javascript :
@@ -90,3 +90,4 @@ languagedef = {
             golfscript :
             forth :
         };
+"""

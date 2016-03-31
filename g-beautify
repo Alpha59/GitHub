@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Either stashes the changes or undoes the last commit, depending on the status"
+desc = "Runs the beatification process by creating/populating the wiki, the gh-pages branch (coming-soon or launched), putting a static viewer. This can only be run after creating a pre-release branch. g-compile is used to build the static website"
 def args_adder(parser):
     pass
 

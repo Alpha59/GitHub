@@ -1,0 +1,597 @@
+/* Table of content
+=====================================
+
+01. Typography
+02. Misc and reusable element
+03. Preloader
+04. Header
+05. Home
+06. About
+07. Service
+08. Subscribe
+09. Footer
+
+*/
+/* ===========================================================
+    01. Typography
+============================================================ */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+input,
+button,
+textarea {
+  outline: none;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+button:focus {
+  outline: none;
+}
+
+a,
+input,
+textarea {
+  -webkit-transition: all 0.3s ease-in-out 0.25s;
+  -o-transition: all 0.3s ease-in-out 0.25s;
+  transition: all 0.3s ease-in-out 0.25s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+p {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/* ===========================================================
+    02. Misc and Re-usable Element
+============================================================ */
+.bg-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.main-wrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 150px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* overlay gradient solid opacity */
+.atom-overlay,
+.atom-gradient,
+.atom-solid-opacity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.atom-overlay {
+  background-image: url(http://traivan98.xyz/atom-preview/image-style/images/overlay.png);
+  background-repeat: repeat;
+}
+
+.page-section {
+  padding-top: 50px;
+  display: none;
+  max-height: 450px;
+  overflow-y: auto;
+}
+.page-section.active {
+  display: block;
+}
+
+.page-heading {
+  margin-bottom: 50px;
+}
+
+.atom-btn-default {
+  padding: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  background-color: transparent;
+  border: 1px solid;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  border: 1px solid;
+}
+.atom-btn-default:hover, .atom-btn-default:focus {
+  color: #fff;
+}
+
+.heading-sepearator {
+  display: inline-block;
+  width: 50px;
+  height: 3px;
+  margin: 30px 0;
+}
+
+/* helper class */
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+/* ===========================================================
+    03. Preloader
+============================================================ */
+#atom-preloader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999999;
+  display: block;
+  background-color: #fff;
+}
+
+.atom-preloader-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-top-color: rgba(0, 0, 0, 0.65);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+  border-left-color: rgba(0, 0, 0, 0.65);
+  border-right-color: rgba(0, 0, 0, 0.15);
+  -webkit-animation: atom-preloader-circle 0.8s linear infinite;
+  animation: atom-preloader-circle 0.8s linear infinite;
+}
+
+@keyframes atom-preloader-circle {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes atom-preloader-circle {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+#content-preloader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  border: 2px solid;
+  -webkit-animation: atom-preloader-circle 0.8s linear infinite;
+  animation: atom-preloader-circle 0.8s linear infinite;
+  z-index: 99;
+}
+
+/* ===========================================================
+    04. Header
+============================================================ */
+.atom-header {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.toggle-bar {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  float: left;
+}
+.toggle-bar.exit .bars {
+  background-color: transparent !important;
+}
+.toggle-bar.exit .bars:before {
+  transform: translateY(8px) rotateZ(-45deg);
+}
+.toggle-bar.exit .bars:after {
+  transform: translateY(-8px) rotateZ(45deg);
+}
+.toggle-bar .bars {
+  display: inline-block;
+  width: 23px;
+  height: 2px;
+  position: relative;
+  top: 2px;
+  vertical-align: bottom;
+  -webkit-transition: all ease .3s;
+  -moz-transition: all ease .3s;
+  -o-transition: all ease .3s;
+  transition: all ease .3s;
+}
+.toggle-bar .bars:after, .toggle-bar .bars:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 23px;
+  height: 2px;
+  -webkit-transition: all ease .3s;
+  -moz-transition: all ease .3s;
+  -o-transition: all ease .3s;
+  transition: all ease .3s;
+  outline: 1px solid transparent;
+  left: 0;
+}
+.toggle-bar .bars:before {
+  top: -8px;
+}
+.toggle-bar .bars:after {
+  top: 8px;
+}
+
+.atom-menu {
+  float: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.atom-menu.show-menu {
+  opacity: 1;
+  visibility: visible;
+}
+.atom-menu li {
+  padding: 10px 5px;
+}
+.atom-menu a {
+  display: block;
+  text-transform: uppercase;
+  position: relative;
+}
+.atom-menu a:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: all 0.3s ease;
+}
+.atom-menu a:hover:after {
+  width: 100%;
+}
+.atom-menu li.active > a:after {
+  width: 100%;
+}
+
+/* ===========================================================
+    05. Home
+============================================================ */
+#atom-home h1 {
+  font-size: 50px;
+}
+
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.atom-countdown div {
+  display: inline-block;
+}
+.atom-countdown div span {
+  display: block;
+  width: 100px;
+}
+.atom-countdown div span:first-child {
+  font-size: 3em;
+}
+.atom-countdown div span:last-child {
+  font-size: 1em;
+  text-transform: uppercase;
+  width: 60px;
+  text-align: center;
+}
+
+/* ===========================================================
+    06. About
+============================================================ */
+.tpl-progress {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: visible;
+  height: 2px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #ddd;
+}
+
+.tpl-progress .progress-bar {
+  padding-top: 2px;
+  position: relative;
+  overflow: visible;
+  font-size: 13px;
+  text-align: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #333;
+}
+
+.tpl-progress .progress-bar > span {
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 3px;
+  position: absolute;
+  top: 0px;
+  right: -5px;
+  text-align: center;
+  line-height: 23px;
+  letter-spacing: 0;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.popup-gallery a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: url(../images/plus.png), auto;
+}
+.popup-gallery a:hover {
+  border-color: #333;
+}
+.popup-gallery a:hover img {
+  transform: scale(0.8);
+}
+.popup-gallery a img {
+  transition: all 0.3s ease;
+}
+
+/* ===========================================================
+    07. Service style
+============================================================ */
+.service {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.service h3 {
+  text-transform: capitalize;
+}
+.service .icon {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  line-height: 100px;
+  margin-bottom: 10px;
+}
+.service .icon i {
+  font-size: 40px;
+}
+
+/* ===========================================================
+    08. Subscribe
+============================================================ */
+#atom-mc-form input {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.atom-subscribe-message {
+  display: block;
+  height: 30px;
+  line-height: 15px;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.atom-subscribe-message p {
+  font-size: 15px;
+}
+
+.error > p {
+  color: #f25454;
+}
+
+.valid > p {
+  color: green;
+}
+
+/* ===========================================================
+    09. Footer
+============================================================ */
+.atom-footer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.social-footer a {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 5px;
+}
+
+.copyright {
+  font-size: 13px;
+}
+.atom-gradient {
+  background: -webkit-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* Chrome 10+, Saf5.1+ */
+  background: -moz-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* IE10 */
+  background: -o-linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* Opera 11.10+ */
+  background: linear-gradient(90deg, rgba(123, 67, 151, 0.5) 10%, rgba(220, 36, 48, 0.7) 90%);
+  /* W3C */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+.atom-btn-default,
+input,
+.atom-countdown,
+.atom-menu li.active > a,
+.atom-menu a:hover,
+.service-symbol i,
+.service .icon i {
+  color: #fff;
+}
+
+.toggle-bar .bars,
+.toggle-bar .bars:before,
+.toggle-bar .bars:after,
+.atom-menu a:after,
+.heading-sepearator {
+  background-color: #fff;
+}
+
+#atom-mc-form input,
+.atom-btn-default {
+  border-color: #fff;
+}
+
+#content-preloader {
+  border-top-color: rgba(255, 255, 255, 0.65);
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(255, 255, 255, 0.65);
+  border-right-color: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+:-ms-input-placeholder {
+  color: #fff;
+}

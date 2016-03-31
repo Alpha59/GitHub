@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Pulls down a given commit, allowing you to test out any changes- as well as comment on any changes within the diff"
+desc = "Pulls down a given commit, allowing you to test out any changes- as well as comment on any changes within the diff. Uses git request-pull to print changes."
 def args_adder(parser):
     parser.add_argument('name', type=str,help="Name of the PR branch to review")
 

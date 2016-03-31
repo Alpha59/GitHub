@@ -2,9 +2,9 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc = "Runs git bisect to find the source of a bug using a graphic"
+desc = "Manages blog posts for jekyll. This can create, edit, or delete blog posts. By default, it always opens vim for input- including edits. When closing, this script will run a spell/grammer checker."
 def args_adder(parser):
-    parser.add_arguments('start', type=str, help="A commit known to be prior to the introduction of the issue being searched for, this will default to the begining of the codebase.")
+    pass
 
 def run(verbose):
     pass

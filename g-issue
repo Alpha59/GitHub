@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 
-desc ="Takes a PR and marks it as approved by this user. If --merge option is set, the branch will be merged into the appropriate branch (if possible). If --approve is set, the branch will be approved by this user, if --reject is set the PR will be marked as rejected, and if --close is marked, the branch will be marked as closed."
+desc ="Quickly creates a gitHub issue for reference. Points to the specific commit that the user has checked out as a reference."
 
 def args_adder(parser):
     parser.add_argument('name', type=str,help="The name or number of the issue, number is used for commenting on an issue.")

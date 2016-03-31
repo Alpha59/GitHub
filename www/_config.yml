@@ -1,0 +1,47 @@
+categories_pages: [Reference, Meta, About]
+defaults:
+    -
+        values:
+            layout: docs
+# everything from here down should be from "LANDING.md"
+downloads_background: "img/downloads-bg.jpg"
+background: "http://traivan98.xyz/atom-preview/image-style/images/dark_bg.jpg"
+subtitle: A test page
+content:
+    -
+        title: Section 1
+        href: section1
+        desc: The first section
+        subs:
+            -
+                title: Sub Heading 1
+                desc: The first subheading under section 1
+            -
+                title: Sub Heading 2
+                desc: The second subheader under section 1
+    -
+        title: Section 2
+        background: "img/intro-bg.jpg"
+        href: section2
+        desc: The section section
+        subs:
+            -
+                title: Sub Heading 1
+                desc: The first subheading under section 2
+            -
+                title: Sub Heading 2
+                desc: The second subheader under section 2
+            -
+                title: Sub Heading 3
+                desc: The second subheader under section 3
+    -
+        title: Section 3
+        href: section3
+        desc: The third section
+        subs:
+            -
+                title: Sub Heading 1
+                desc: The first subheading under section 3
+            -
+                title: Sub Heading 2
+                desc: The second subheader under section 3

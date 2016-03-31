@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{site.github.project_tagline}}">
+    <meta name="author" content="{{site.github.owner_name}}">
+    <title>{{site.github.project_title}}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/{{site.github.repository_name}}/css/landing.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.altavra.com/favicon.ico">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <span class="light">{{site.github.project_title}}</span> {{site.subtitle}}
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    {% for cont in site.content %}
+                    <li>
+                    <a class="page-scroll" href="#{{cont.href}}">{{cont.title}}</a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a class="page-scroll" href="#github">GitHub</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/{{site.github.repository_name}}/docs">Docs</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro" style="background-image:url('{{site.background}}')">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">{{site.github.project_title}}</h1>
+                        <h2 class="brand-heading">{{site.subtitle}}</h2>
+                        <p class="intro-text">{{site.github.project_tagline}}<br>Created by {{site.github.owner_name}}</p>
+                        <a href="#{{site.content[0].href}}" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    {% for cont in site.content %}
+    <section id="{{cont.href}}" class="container content-section text-center">
+        <div class="row image-back" style="background-image:url('{{cont.background}}')">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>{{cont.title}}</h2>
+                <p>{{cont.desc}}</p>
+                {% for sub in cont.subs %}
+                <h3>{{sub.title}}</h3>
+                <p>{{sub.desc}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    <!-- Download Section -->
+    <section id="github" class="content-section text-center">
+    <div class="download-section image-back" style="background-image:url('{{site.downloads_background}}')">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>View on GitHub</h2>
+                    <p>You can visit this project on GitHub for details about how to contribute or download</p>
+                    <a href="{{site.github.repository_url}}" class="btn btn-default btn-lg">Visit GitHub Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact the {{site.github.project_title}} developer!</h2>
+                <p>{{site.contact}}</p>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                    <a href="http://{{site.github.owner_name}}.github.io/" class="btn btn-default btn-lg"><i class="fa fa-th-large fa-fw"></i> <span class="network-name">{{site.github.owner_name}}</span></a>
+                    </li>
+                    <li>
+                    <a href="{{site.github.repository_url}}" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                    <a href="/{{site.github.repository_name}}/docs/" class="btn btn-default btn-lg"><i class="fa fa-book fa-fw"></i> <span class="network-name">Documentation</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Created by {{site.github.owner_name}} &copy; {{site.time | date: '%Y'}}</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/{{site.github.repository_name}}/js/landing.js"></script>
+
+</body>
+
+</html>
