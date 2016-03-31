@@ -44,7 +44,7 @@ def run(branchType, name, f=None, execute="", nodev=False, verbose=False):
     import gitCommands as git
     if not nodev :
         git.save("Saved to switch branches")
-        git.checkout("dev")
+        git.branch("dev")
     git.branch(branchType + "-" + name)
     if branchType == "s" :
         if not f is None:
